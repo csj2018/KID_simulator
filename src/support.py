@@ -4,6 +4,7 @@ from tkinter import ttk
 import time
 import copy
 import os
+import xlrd
 #state
 class State:
     def __init__(self):
@@ -74,7 +75,7 @@ class Club:
         self.player = []
     def random_player5(self, biasmin =30, biasmax =60):
         for i in range(5):
-            self.player.append(Player(random_name()))
+            self.player.append(Player(random_name_jd()))
             self.player[i].random_power(biasmin, biasmax)
             self.player[i].site =i+1
     def random_name(self):
@@ -241,6 +242,19 @@ def random_name():
     r = random.randint(0,len(first_names)-1)
     name += first_names[r]
     return name
+
+dj_name = []
+path = os.getcwd()
+dj_data = xlrd.open_workbook(path+'/src/name_jd.xls')
+dj_table = dj_data.sheets()[0]
+row = dj_table.nrows
+for i in range(row):
+    dj_name.append(dj_table.cell_value(i, 0))
+
+def random_name_jd():
+    name = random.choice(dj_name)
+    return name
+
 class Hpbar:
     def __init__(self,master,height =18,width =100,hpmax =100,hp =100, bg='pink',fg ='green'):
         self.master = master

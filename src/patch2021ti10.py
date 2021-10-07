@@ -1,5 +1,5 @@
 from src.support import *
-import xlrd
+
 club_list =[]
 #club_list.append(Club('PSG.LGD'))
 #club_list[len(club_list)-1].creat_player(['萧瑟', 'SoMnus丶M', 'Old Eleven', 'Fy', 'Xnova'],65,90)

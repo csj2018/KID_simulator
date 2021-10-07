@@ -320,14 +320,19 @@ def weibo_creat():
         winner = var_red.get()
         loser = var_blue.get()
     name = ['@ROTK：', '@Fade乌龙院：', '@LGD电子俱乐部：', '@Esport海涛：', '@斗鱼杰出哥：', '@Iceforg：', '@G胖：', '@Inflame：',
-            '@BurNing：', '@AMS：', '@IG_Ana：', '@Faker：']
+            '@BurNing：', '@AMS：', '@IG_Ana：', '@Faker：','@小辣椒：','@Snow不会打工夫：','@单车：','@DC','@Esports海涛：','@吃花椒的喵酱：',
+            '@绵绵：','@IG 430：','@BBC：','@解说AA：','@郑翔：','@Inflame：']
     says = [loser + '下次干回来啊！', '这把' + winner + '发挥得太好了', loser + '这局打的是个什么东西？！', loser + '简直是被' + winner + '摁在地上摩擦……',
             '今年ti就看' + winner + '的了！', loser + '不如解散了吧?', winner + '硬实力冠军啊！恭喜' + winner, loser+'！！！' + '经典刷了送，看哭了！',
-            loser + '这局被b爆了啊']
+            loser + '这局被b爆了啊', f'我就直说了，这波{loser}不是假赛，我倒立拉屎！',f'涛哥震怒，{loser}假赛',
+            f'内部消息：{loser}1、{random.choice(["2","3","4","5"])}不和，消息来源{random.choice(["人杰地灵工作室","SG","NGA","贴吧","MAX+"])}']
     for i in range(7):
         state.weibo_name.append(name[random.randint(0, len(name) - 1)])
         state.weibo_says.append(says[random.randint(0, len(says) - 1)])
 def refresh_weibo():
+    for i in range(len(mw1)):
+        mw1[-1].grid_remove()
+        mw2[-1].grid_remove()
     l = len(state.weibo_name)
     for i in range(l):
         mw1.append(Message(frame_weibo,text = state.weibo_name[-i], fg ='blue', width = 120, justify ='right', anchor ='e').grid(row = 2*i+1, column = 1))
